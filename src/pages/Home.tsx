@@ -1,11 +1,7 @@
-import Items from "../components/Navbar/Catalogue/Items";
-
 const Home = () => {
   return (
     <div className="home">
-      <main>
-        <Items />
-      </main>
+      <main></main>
 
       <footer></footer>
     </div>

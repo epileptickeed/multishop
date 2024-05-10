@@ -1,18 +1,15 @@
-import React, { useState } from "react";
 import catalogue from "../../../../data/items.json";
+import CatalogueHeaders from "./CatalogueHeaders";
+import { useSelector } from "react-redux";
+import { visibleSelector } from "../../../../redux/VisibleSlices/selector";
 
 const Items = () => {
-  //   console.log(catalogue);
-  const [visible, setVisible] = useState(0);
+  const { catalogueItems } = useSelector(visibleSelector);
   return (
     <div className="catalogue">
       <div className="headers_container">
         {catalogue.map((catalogue) => {
-          return (
-            <h2 className="main_items" onClick={() => setVisible(catalogue.id)}>
-              {catalogue.title}
-            </h2>
-          );
+          return <CatalogueHeaders key={catalogue.id} {...catalogue} />;
         })}
       </div>
 
@@ -20,7 +17,10 @@ const Items = () => {
         {catalogue.map((catalogue) => {
           return (
             <div
-              className={visible === catalogue.id ? "main_header" : "notActive"}
+              className={
+                catalogueItems === catalogue.id ? "main_header" : "notActive"
+              }
+              key={catalogue.id}
             >
               {catalogue.items.map((header) => (
                 <div key={header.id} className="main_header_items">
