@@ -4,13 +4,11 @@ import { visibleSelector } from "../../../../redux/VisibleSlices/selector";
 import { setCatalogueItems } from "../../../../redux/VisibleSlices/slice";
 const CatalogueHeaders = ({ id, title }: Catalogue) => {
   const dispatch = useDispatch();
-  const { catalogueItems } = useSelector(visibleSelector);
-  console.log(catalogueItems, "items");
-  console.log(id, "id");
+  const { catalogueItemsIndex } = useSelector(visibleSelector);
   return (
-    <h2
+    <p
       className={
-        catalogueItems === id
+        catalogueItemsIndex === id
           ? "catalogue_menu_item-active"
           : "catalogue_menu_item"
       }
@@ -18,7 +16,7 @@ const CatalogueHeaders = ({ id, title }: Catalogue) => {
       onClick={() => dispatch(setCatalogueItems(id))}
     >
       {title}
-    </h2>
+    </p>
   );
 };
 

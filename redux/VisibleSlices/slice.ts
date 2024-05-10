@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type VisibleSliceProps = {
-  catalogueItems: number;
+  catalogueItemsIndex: number;
 };
 
 const initialState: VisibleSliceProps = {
-  catalogueItems: 0,
+  catalogueItemsIndex: 0,
 };
 
 export const visibleSlice = createSlice({
@@ -13,7 +13,7 @@ export const visibleSlice = createSlice({
   initialState,
   reducers: {
     setCatalogueItems: (state, action) => {
-      state.catalogueItems = action.payload;
+      state.catalogueItemsIndex = action.payload;
     },
   },
 });
