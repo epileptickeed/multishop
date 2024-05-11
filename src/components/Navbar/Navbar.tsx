@@ -1,19 +1,25 @@
 import { Link } from "react-router-dom";
-import { IoSearch } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { links } from "./links_json";
 import NavLinks from "./NavLinks";
 import Items from "./Catalogue/Items";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsCatalogueActive } from "../../../redux/BooleanSlices/Slice";
-import { useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 import { booleanSliceSelector } from "../../../redux/BooleanSlices/selector";
+import { searchSelector } from "../../../redux/FormSlice/selector";
+import {
+  setSearchHistory,
+  setSearchValue,
+} from "../../../redux/FormSlice/slice";
+import Index from "./SearchInputDiv/Index";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const { isCatalogueActive } = useSelector(booleanSliceSelector);
   const catalogueRef = useRef<HTMLDivElement>(null);
   const catalogueBtnRef = useRef<HTMLDivElement>(null);
+  const { search, searchHistory } = useSelector(searchSelector);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -30,7 +36,15 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log(search);
+    dispatch(setSearchValue(""));
+    dispatch(setSearchHistory(search));
+  };
+  console.log(searchHistory);
 
   return (
     <div className="navbar">
@@ -53,9 +67,8 @@ const Navbar = () => {
       >
         <Items />
       </div>
-      <div className="search_input_div">
-        <input type="text" placeholder="Поиск по сайту.." />
-        <IoSearch size={25} />
+      <div className="search_input_div" onSubmit={handleSubmit}>
+        <Index />
       </div>
       <nav>
         {links.map((item, index) => {

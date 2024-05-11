@@ -106,6 +106,9 @@ body {
     padding-inline: 1rem;
     position: relative;
 
+    form {
+      width: 100%;
+    }
     svg {
       position: absolute;
       left: 92%;
@@ -124,6 +127,24 @@ body {
 
       &:hover {
         box-shadow: var(--shadow);
+      }
+    }
+
+    .searchHistory {
+      position: absolute;
+      display: flex;
+      justify-content: start;
+      flex-direction: column;
+      width: 100%;
+      padding-inline: 2rem;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          margin-right: 2rem;
+        }
       }
     }
   }

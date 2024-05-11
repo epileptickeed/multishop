@@ -10,42 +10,66 @@
           {
             "title": "Варочные панели",
             "id": 0,
-            "amount": 523
+            "amount": 523,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           },
           {
             "title": "Духовые шкафы",
             "id": 1,
-            "amount": 315
+            "amount": 315,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           },
           {
             "title": "Вытяжки",
             "id": 2,
-            "amount": 715
+            "amount": 715,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           },
           {
             "title": "Встраиваемые микроволновые печи",
             "id": 3,
-            "amount": 61
+            "amount": 61,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           },
           {
             "title": "Встраиваемые холодильники",
             "id": 4,
-            "amount": 75
+            "amount": 75,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           },
           {
             "title": "Встраиваемые морозильные шкафы",
             "id": 5,
-            "amount": 16
+            "amount": 16,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           },
           {
             "title": "Встраиваемые посудомоечные машины",
             "id": 6,
-            "amount": 160
+            "amount": 160,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           },
           {
             "title": "Встраиваемые стиральные машины",
             "id": 7,
-            "amount": 20
+            "amount": 20,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Встраиваемая техника"
           }
         ]
       },
@@ -56,27 +80,42 @@
           {
             "title": "Плиты и печи",
             "id": 0,
-            "amount": 1406
+            "amount": 1406,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Техника для кухни"
           },
           {
             "title": "Холодильное оборудование",
             "id": 1,
-            "amount": 1670
+            "amount": 1670,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Техника для кухни"
           },
           {
             "title": "Посудомоечные машины",
             "id": 2,
-            "amount": 339
+            "amount": 339,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Техника для кухни"
           },
           {
             "title": "Приготовление напитков",
             "id": 3,
-            "amount": 2488
+            "amount": 2488,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Техника для кухни"
           },
           {
             "title": "Электрочайники и термопоты",
             "id": 4,
-            "amount": 877
+            "amount": 877,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Техника для кухни"
           }
         ]
       }
@@ -94,12 +133,26 @@
           {
             "title": "Фены",
             "id": 2,
-            "amount": 287
+            "amount": 287,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Укладка и сушка волос"
           },
           {
             "title": "Фены-щетки",
             "id": 3,
-            "amount": 49
+            "amount": 49,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Укладка и сушка волос"
+          },
+          {
+            "title": "Фены-щетки",
+            "id": 4,
+            "amount": 49,
+            "isAdded": false,
+            "isFavorite": false,
+            "catalogueName": "Укладка и сушка волос"
           }
         ]
       }
