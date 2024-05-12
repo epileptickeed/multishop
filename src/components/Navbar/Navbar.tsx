@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
-import { links } from "./links_json";
-import NavLinks from "./NavLinks";
+import { links } from "./NavLinks/links_json";
+import NavLinks from "./NavLinks/NavLinks";
 import Items from "./Catalogue/Items";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsCatalogueActive } from "../../../redux/BooleanSlices/Slice";
@@ -19,7 +19,7 @@ const Navbar = () => {
   const { isCatalogueActive } = useSelector(booleanSliceSelector);
   const catalogueRef = useRef<HTMLDivElement>(null);
   const catalogueBtnRef = useRef<HTMLDivElement>(null);
-  const { search, searchHistory } = useSelector(searchSelector);
+  const { search } = useSelector(searchSelector);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -44,7 +44,6 @@ const Navbar = () => {
     dispatch(setSearchValue(""));
     dispatch(setSearchHistory(search));
   };
-  console.log(searchHistory);
 
   return (
     <div className="navbar">
@@ -71,8 +70,8 @@ const Navbar = () => {
         <Index />
       </div>
       <nav>
-        {links.map((item, index) => {
-          return <NavLinks key={index} {...item} />;
+        {links.map((links, index) => {
+          return <NavLinks key={index} {...links} />;
         })}
       </nav>
     </div>

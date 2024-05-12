@@ -3,6 +3,7 @@ import booleanSlice from "./BooleanSlices/Slice";
 import visibleSlice from "./VisibleSlices/slice";
 import itemsSlice from "./fetch/fetch";
 import formSlice from "./FormSlice/slice";
+import filterSlice from "./newsFilterSlices/NewsFilterSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     visible: visibleSlice,
     items: itemsSlice,
     search: formSlice,
+    filter: filterSlice,
   },
 });
 

@@ -109,7 +109,7 @@ body {
     form {
       width: 100%;
     }
-    svg {
+    .search_svg {
       position: absolute;
       left: 92%;
       top: 30%;
@@ -130,21 +130,51 @@ body {
       }
     }
 
+    /*input:focus*/
     .searchHistory {
       position: absolute;
-      display: flex;
       justify-content: start;
       flex-direction: column;
       width: 100%;
-      padding-inline: 2rem;
+      box-shadow: var(--shadow);
+      background-color: var(--clr-grey);
+      padding: 1rem;
+      border-radius: 0 0 1rem 1rem;
+      width: 96%;
 
-      div {
+      .search_history_header {
+        padding-inline: 0.5rem;
         display: flex;
+        justify-content: center;
+        align-items: center;
         justify-content: space-between;
+      }
 
-        button {
-          margin-right: 2rem;
+      h4 {
+        cursor: pointer;
+      }
+      .search_history_items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          padding: 0.7rem;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-decoration: none;
+          color: #272727;
+
+          &:hover {
+            background-color: #acacac30;
+          }
         }
+      }
+      .close_svg {
+        z-index: 1;
+        cursor: pointer;
       }
     }
   }

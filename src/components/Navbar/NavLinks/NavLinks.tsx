@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NavLinksProps } from "./Types";
+import { NavLinksProps } from "../Types";
 
 const NavLinks = ({ path, icon, title }: NavLinksProps) => {
   return (

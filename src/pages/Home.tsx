@@ -1,7 +1,11 @@
+import News from "../components/News/News";
+
 const Home = () => {
   return (
     <div className="home">
-      <main></main>
+      <main>
+        <News />
+      </main>
 
       <footer></footer>
     </div>
