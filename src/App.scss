@@ -213,6 +213,12 @@ body {
       padding-block: 0.5rem;
       cursor: pointer;
       position: relative;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
       &:hover {
         &::after {
           content: '';
@@ -230,6 +236,10 @@ body {
       padding-block: 0.5rem;
       cursor: pointer;
       position: relative;
+      a {
+        text-decoration: none;
+        color: black;
+      }
       &::after {
         content: '';
         position: absolute;
@@ -265,13 +275,23 @@ body {
   display: flex;
   flex-direction: column;
 
-  .catalogs_header_item {
+  .catalogs_header_items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: start;
     gap: 1rem;
+    padding-block: 1rem;
+
+    a {
+      text-decoration: none;
+      color: #272727;
+    }
 
     .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 3rem;
       border-radius: 1rem;
       background-color: white;
@@ -285,25 +305,49 @@ body {
   }
 }
 
+.slider_main {
+  position: relative;
+
+  button {
+    position: absolute;
+    z-index: 2;
+  }
+  .btnLeft {
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+  }
+  .btnRight {
+    top: 50%;
+    left: 96%;
+  }
+}
+
 .slider {
   display: flex;
   width: 100%;
+  height: 300px;
   gap: 1rem;
   overflow: hidden;
+  position: relative;
+
+  &:hover {
+  }
 
   .slider_item {
     width: 400px;
-    height: 400px;
+    height: 300px;
     position: relative;
 
     .slider_item_inner {
       width: 400px;
       height: 300px;
-      border-radius: 10px;
+      border-radius: 0.5rem;
       background-size: cover;
       background-position: center;
 
       .background-grey {
+        border-radius: 0.5rem;
         position: absolute;
         height: 300px;
         width: 100%;
