@@ -1,18 +1,15 @@
-import { Link } from "react-router-dom";
-import { IoIosArrowDown } from "react-icons/io";
-import { links } from "./NavLinks/links_json";
-import NavLinks from "./NavLinks/NavLinks";
-import Items from "./Catalogue/Items";
-import { useDispatch, useSelector } from "react-redux";
-import { setIsCatalogueActive } from "../../../redux/BooleanSlices/Slice";
-import { FormEvent, useEffect, useRef } from "react";
-import { booleanSliceSelector } from "../../../redux/BooleanSlices/selector";
-import { searchSelector } from "../../../redux/FormSlice/selector";
-import {
-  setSearchHistory,
-  setSearchValue,
-} from "../../../redux/FormSlice/slice";
-import Index from "./SearchInputDiv/Index";
+import { Link } from 'react-router-dom';
+import { IoIosArrowDown } from 'react-icons/io';
+import { links } from './NavLinks/links_json';
+import NavLinks from './NavLinks/NavLinks';
+import Items from './Catalogue/Items';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsCatalogueActive } from '../../../redux/BooleanSlices/Slice';
+import { FormEvent, useEffect, useRef } from 'react';
+import { booleanSliceSelector } from '../../../redux/BooleanSlices/selector';
+import { searchSelector } from '../../../redux/FormSlice/selector';
+import { setSearchHistory, setSearchValue } from '../../../redux/FormSlice/slice';
+import Index from './SearchInputDiv/Index';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -31,39 +28,40 @@ const Navbar = () => {
       }
     };
 
-    document.addEventListener("mousedown", handler);
+    document.addEventListener('mousedown', handler);
 
     return () => {
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener('mousedown', handler);
     };
   }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log(search);
-    dispatch(setSearchValue(""));
+    dispatch(setSearchValue(''));
     dispatch(setSearchHistory(search));
   };
 
   return (
     <div className="navbar">
       <div className="logo_div">
-        <Link className="logo_link" to={"/"}>
+        <Link className="logo_link" to={'/'}>
           MULTISHOP
         </Link>
+        {/* <input type="checkbox" name="checkbox" id="checkbox" /> */}
+        {/* <label htmlFor="checkbox"> */}
         <div
           className="catalogue_btn"
           onClick={() => dispatch(setIsCatalogueActive(!isCatalogueActive))}
-          ref={catalogueBtnRef}
-        >
+          ref={catalogueBtnRef}>
           Каталог
           <IoIosArrowDown />
         </div>
+        {/* </label> */}
       </div>
       <div
-        className={isCatalogueActive ? "catalogue_main_wrapper" : "notActive"}
-        ref={catalogueRef}
-      >
+        className={isCatalogueActive ? 'catalogue_main_wrapper' : 'notActive'}
+        ref={catalogueRef}>
         <Items />
       </div>
       <div className="search_input_div" onSubmit={handleSubmit}>

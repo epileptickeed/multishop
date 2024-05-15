@@ -72,6 +72,15 @@ body {
       font-weight: bold;
       cursor: pointer;
     }
+
+    #checkbox {
+      display: none;
+
+      &:checked ~ .catalogue_btn {
+        // transform: rotate(90deg);
+        color: black;
+      }
+    }
   }
 
   nav {
@@ -184,12 +193,15 @@ body {
   position: absolute;
   top: 100%;
   width: 100%;
+  z-index: 1;
+  background-color: white;
 }
 
 .catalogue {
   border-radius: 1rem;
   box-shadow: 0px 0px 63px 14px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   display: flex;
+  z-index: 1;
 
   .headers_container {
     padding: 1rem;
@@ -244,6 +256,64 @@ body {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         column-gap: 1rem;
+      }
+    }
+  }
+}
+
+.catalogue_header_page {
+  display: flex;
+  flex-direction: column;
+
+  .catalogs_header_item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .card {
+      padding: 3rem;
+      border-radius: 1rem;
+      background-color: white;
+      transition: all 0.25s ease;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: var(--shadow);
+      }
+    }
+  }
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  overflow: hidden;
+
+  .slider_item {
+    width: 400px;
+    height: 400px;
+    position: relative;
+
+    .slider_item_inner {
+      width: 400px;
+      height: 300px;
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+
+      .background-grey {
+        position: absolute;
+        height: 300px;
+        width: 100%;
+        background: linear-gradient(#cacaca60 0%, #ffffff01 100%);
+        z-index: 0;
+      }
+      p,
+      span {
+        color: white;
+        z-index: 1;
       }
     }
   }

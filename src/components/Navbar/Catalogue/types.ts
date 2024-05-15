@@ -7,6 +7,7 @@ export type HeaderItems = {
 export type CatalogueItems = {
   title: string;
   id: number;
+  link: string;
   items: HeaderItems[];
 };
 

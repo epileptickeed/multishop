@@ -6,6 +6,7 @@
       {
         "title": "Встраиваемая техника",
         "id": 0,
+        "link": "/catalog/vstroimaya-tehnika",
         "items": [
           {
             "title": "Варочные панели",
@@ -76,6 +77,7 @@
       {
         "title": "Техника для кухни",
         "id": 1,
+        "link": "/catalog/tehnika-dlya-kuhni",
         "items": [
           {
             "title": "Плиты и печи",
@@ -129,6 +131,7 @@
       {
         "title": "Укладка и сушка волос",
         "id": 1,
+        "link": "/catalog/ukladka-i-sushka-volos",
         "items": [
           {
             "title": "Фены",
