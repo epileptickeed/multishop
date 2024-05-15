@@ -1,19 +1,17 @@
-import { useSelector } from "react-redux";
-import { visibleSelector } from "../../../../../redux/VisibleSlices/selector";
-import { Catalogue } from "../types";
-import SubHeaderItems from "./SubHeaderItems";
+import { useSelector } from 'react-redux';
+import { visibleSelector } from '../../../../../redux/VisibleSlices/selector';
+import { Catalogue } from '../types';
+import SubHeaderItems from './SubHeaderItems';
+import { Link } from 'react-router-dom';
 
 const ItemsHeader = ({ items, id }: Catalogue) => {
   const { catalogueItemsIndex } = useSelector(visibleSelector);
 
   return (
-    <div
-      className={catalogueItemsIndex === id ? "main_header" : "notActive"}
-      key={id}
-    >
+    <div className={catalogueItemsIndex === id ? 'main_header' : 'notActive'} key={id}>
       {items.map((header) => (
         <div key={header.id} className="main_header_items">
-          <h2>{header.title}</h2>
+          <Link to={header.link}>{header.title}</Link>
           <div className="sub_header_items">
             {header.items.map((items) => (
               <SubHeaderItems key={items.id} {...items} />

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Buttons from './Content/Buttons';
 // import Content from './Content/Content';
 import news from '../../../data/news.json';
@@ -19,6 +19,15 @@ const News = () => {
 
   const [width, setWidth] = useState(0);
 
+  const updateIndex = (newIndex: number) => {
+    if (newIndex < 0) {
+      newIndex = news.length - 10;
+    } else if (newIndex >= news.length - 2) {
+      newIndex = 0;
+    }
+    setActiveIndex(newIndex);
+  };
+
   useEffect(() => {
     if (containerRef.current) {
       setWidth(containerRef.current?.scrollWidth - containerRef.current?.offsetWidth);
@@ -30,12 +39,15 @@ const News = () => {
       <div className="news_buttons">
         <Buttons />
       </div>
+      <button onClick={() => updateIndex(activeIndex - 1)}>left</button>
+      <button onClick={() => updateIndex(activeIndex + 1)}>right</button>
       <motion.div className="news_content" ref={containerRef}>
         {/* <Content /> */}
         <motion.div
           className="news_content_inner"
-          drag="x"
-          dragConstraints={{ right: 0, left: -width }}>
+          // drag="x"
+          dragConstraints={{ right: 0, left: -width }}
+          animate={{ x: `-${activeIndex * 20.79}%` }}>
           {currentFilter === ''
             ? news.map((item) => {
                 return (
@@ -53,6 +65,7 @@ const News = () => {
                   </motion.div>
                 );
               })}
+          {' hello '}
         </motion.div>
       </motion.div>
     </div>

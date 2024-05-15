@@ -1,9 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import booleanSlice from "./BooleanSlices/Slice";
-import visibleSlice from "./VisibleSlices/slice";
-import itemsSlice from "./fetch/fetch";
-import formSlice from "./FormSlice/slice";
-import filterSlice from "./newsFilterSlices/NewsFilterSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import booleanSlice from './BooleanSlices/Slice';
+import visibleSlice from './VisibleSlices/slice';
+import itemsSlice from './fetch/fetch';
+import formSlice from './FormSlice/slice';
+import filterSlice from './newsFilterSlices/NewsFilterSlice';
+import pickedItemSlice from './PickedItemsSlice/PickedItemSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     items: itemsSlice,
     search: formSlice,
     filter: filterSlice,
+    PickedItems: pickedItemSlice,
   },
 });
 

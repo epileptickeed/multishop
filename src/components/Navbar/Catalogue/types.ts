@@ -1,17 +1,18 @@
 export type HeaderItems = {
   title: string;
-  id: number;
+  id: string;
   amount: number;
 };
 
 export type CatalogueItems = {
   title: string;
-  id: number;
+  id: string;
+  link: string;
   items: HeaderItems[];
 };
 
 export type Catalogue = {
   title: string;
-  id: number;
+  id: string;
   items: CatalogueItems[];
 };
