@@ -8,7 +8,8 @@ const ItemsHeader = ({ items, id }: Catalogue) => {
   const { catalogueItemsIndex } = useSelector(visibleSelector);
 
   return (
-    <div className={catalogueItemsIndex === id ? 'main_header' : 'notActive'} key={id}>
+    // при изменении тут с == на === всё ломается, если id с +'oм(запарсено в инт) хз почему узнать разобраться
+    <div className={catalogueItemsIndex == +id ? 'main_header' : 'notActive'} key={id}>
       {items.map((header) => (
         <div key={header.id} className="main_header_items">
           <Link to={header.link}>{header.title}</Link>

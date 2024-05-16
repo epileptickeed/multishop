@@ -13,10 +13,19 @@
             "amount": 523,
             "products": [
               {
-                "id": "item_id",
+                "id": "10000",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
+                "isFavorite": false,
+                "isAdded": false,
+                "catalogueName": "Встраиваемая техника"
+              },
+              {
+                "id": "10000",
+                "image": "item_image",
+                "title": "item_title1",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -29,10 +38,10 @@
             "amount": 315,
             "products": [
               {
-                "id": "item_id",
+                "id": "10001",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -45,10 +54,10 @@
             "amount": 715,
             "products": [
               {
-                "id": "item_id",
+                "id": "10002",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -61,10 +70,10 @@
             "amount": 61,
             "products": [
               {
-                "id": "item_id",
+                "id": "10003",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -77,10 +86,10 @@
             "amount": 75,
             "products": [
               {
-                "id": "item_id",
+                "id": "10004",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -93,10 +102,10 @@
             "amount": 16,
             "products": [
               {
-                "id": "item_id",
+                "id": "10005",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -109,10 +118,10 @@
             "amount": 160,
             "products": [
               {
-                "id": "item_id",
+                "id": "10006",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -125,10 +134,10 @@
             "amount": 20,
             "products": [
               {
-                "id": "item_id",
+                "id": "10007",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Встраиваемая техника"
@@ -147,10 +156,10 @@
             "amount": 1406,
             "products": [
               {
-                "id": "item_id",
+                "id": "10008",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -163,10 +172,10 @@
             "amount": 1670,
             "products": [
               {
-                "id": "item_id",
+                "id": "10009",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -179,10 +188,10 @@
             "amount": 339,
             "products": [
               {
-                "id": "item_id",
+                "id": "10010",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -195,10 +204,10 @@
             "amount": 2488,
             "products": [
               {
-                "id": "item_id",
+                "id": "10011",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -211,10 +220,10 @@
             "amount": 877,
             "products": [
               {
-                "id": "item_id",
+                "id": "10012",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -233,10 +242,10 @@
             "amount": 1406,
             "products": [
               {
-                "id": "item_id",
+                "id": "10013",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -249,10 +258,10 @@
             "amount": 1670,
             "products": [
               {
-                "id": "item_id",
+                "id": "10014",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -265,10 +274,10 @@
             "amount": 339,
             "products": [
               {
-                "id": "item_id",
+                "id": "10015",
                 "image": "item_image",
                 "title": "item_title",
-                "price": "item_price",
+                "price": 500,
                 "isFavorite": false,
                 "isAdded": false,
                 "catalogueName": "Техника для кухни"
@@ -292,25 +301,49 @@
             "title": "Фены",
             "id": "2000",
             "amount": 287,
-            "isAdded": false,
-            "isFavorite": false,
-            "catalogueName": "Укладка и сушка волос"
+            "products": [
+              {
+                "id": "20001",
+                "image": "item_image",
+                "title": "item_title",
+                "price": 500,
+                "isFavorite": false,
+                "isAdded": false,
+                "catalogueName": "Техника для кухни"
+              }
+            ]
           },
           {
             "title": "Фены-щетки",
             "id": "2001",
             "amount": 49,
-            "isAdded": false,
-            "isFavorite": false,
-            "catalogueName": "Укладка и сушка волос"
+            "products": [
+              {
+                "id": "20001",
+                "image": "item_image",
+                "title": "item_title",
+                "price": 500,
+                "isFavorite": false,
+                "isAdded": false,
+                "catalogueName": "Техника для кухни"
+              }
+            ]
           },
           {
             "title": "Фены-щетки",
             "id": "2002",
             "amount": 49,
-            "isAdded": false,
-            "isFavorite": false,
-            "catalogueName": "Укладка и сушка волос"
+            "products": [
+              {
+                "id": "20001",
+                "image": "item_image",
+                "title": "item_title",
+                "price": 500,
+                "isFavorite": false,
+                "isAdded": false,
+                "catalogueName": "Техника для кухни"
+              }
+            ]
           }
         ]
       }
