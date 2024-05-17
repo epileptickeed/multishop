@@ -429,3 +429,30 @@ body {
     }
   }
 }
+
+.products_main_items {
+  display: flex;
+}
+
+.products_menu {
+  display: flex;
+  width: 30%;
+}
+
+.products_items_column {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  width: 100%;
+
+  .products_item_card_column {
+    display: flex;
+    justify-content: space-between;
+
+    .products_item_card_column_title {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+  }
+}
