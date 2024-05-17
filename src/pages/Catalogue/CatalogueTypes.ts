@@ -3,4 +3,5 @@ export type CatalogueHeaderItemsProps = {
   itemId: string | undefined;
   title: string;
   id: string;
+  index: number;
 };

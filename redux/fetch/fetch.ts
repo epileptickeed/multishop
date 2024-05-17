@@ -1,60 +1,77 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ITEMS_API } from "./ITEMS_API";
-import axios from "axios";
-import { Catalogue } from "../../src/components/Navbar/Catalogue/types";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ITEMS_API } from './ITEMS_API';
+import axios from 'axios';
+import { Catalogue } from '../../src/components/Navbar/Catalogue/types';
+
+export type Products = {
+  id: string;
+  image: string;
+  title: string;
+  price: number;
+  isFavorite: boolean;
+  isAdded: boolean;
+  rating: number;
+  rating_votes: number;
+  in_stock: number;
+  profitable: boolean;
+  reliability: string;
+  catalogueName: string;
+};
 
 export type SneakersTypeProps = {
   shopItems: Catalogue[];
   status: string;
   searchValue: string;
-  // favoriteSneakers: SneakersType[];
-  // addedSneakers: SneakersType[];
+
+  cartItems: Products[];
+
+  favoritedItems: Products[];
 };
 
 const initialState: SneakersTypeProps = {
   shopItems: [],
-  status: "loading",
-  searchValue: "",
-  // favoriteSneakers: [],
-  // addedSneakers: [],
+  status: 'loading',
+  searchValue: '',
+  cartItems: [],
+
+  favoritedItems: [],
 };
 
-// First, create the thunk
-export const fetchShopItems = createAsyncThunk(
-  "shopItems/fetchItems",
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get(`${ITEMS_API}/`);
-      return response.data;
-    } catch (err) {
-      console.error(err);
-      return thunkAPI.rejectWithValue(err);
-    }
+export const fetchShopItems = createAsyncThunk('shopItems/fetchItems', async (_, thunkAPI) => {
+  try {
+    const response = await axios.get(`${ITEMS_API}/`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    return thunkAPI.rejectWithValue(err);
   }
-);
+});
 
-// Then, handle actions in your reducers:
 export const itemsSlice = createSlice({
-  name: "shopItems",
+  name: 'shopItems',
   initialState,
   reducers: {
-    // standard reducer logic, with auto-generated action types per reducer
+    setToCart: (state, action) => {
+      state.cartItems.push(action.payload);
+    },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchShopItems.pending, (state) => {
-        state.status = "loading";
+        state.status = 'loading';
         state.shopItems = [];
       })
       .addCase(fetchShopItems.fulfilled, (state, action) => {
         state.shopItems = action.payload;
-        state.status = "success";
+        state.status = 'success';
       })
       .addCase(fetchShopItems.rejected, (state) => {
-        state.status = "error";
+        state.status = 'error';
         state.shopItems = [];
       });
   },
 });
 
+export const { setToCart } = itemsSlice.actions;
 export default itemsSlice.reducer;
