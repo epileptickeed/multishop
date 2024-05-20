@@ -8,8 +8,17 @@ import Navbar from './components/Navbar/Navbar';
 import SubHeadersPages from './pages/Catalogue/SeconderyHeader/ThirdHeaderPage';
 import MainHeaderPage from './pages/Catalogue/CatalogueHeader/MainHeaderPage';
 import ProductsPage from './pages/Catalogue/Products/ProductsPage';
+import { selectedItemSelector } from '../redux/PickedItemsSlice/selector';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const { currentMainHeader, currentSubHeaderItem, currentSecondHeader } =
+    useSelector(selectedItemSelector);
+
+  console.log(currentSubHeaderItem, '1');
+  console.log(currentMainHeader, '2');
+  console.log(currentSecondHeader, '3');
+
   return (
     <div className="main_wrapper">
       <header>

@@ -26,6 +26,8 @@ export type SneakersTypeProps = {
   cartItems: Products[];
 
   favoritedItems: Products[];
+
+  currentProductsOnPage: Products[];
 };
 
 const initialState: SneakersTypeProps = {
@@ -35,6 +37,7 @@ const initialState: SneakersTypeProps = {
   cartItems: [],
 
   favoritedItems: [],
+  currentProductsOnPage: [],
 };
 
 export const fetchShopItems = createAsyncThunk('shopItems/fetchItems', async (_, thunkAPI) => {
@@ -53,6 +56,12 @@ export const itemsSlice = createSlice({
   reducers: {
     setToCart: (state, action) => {
       state.cartItems.push(action.payload);
+    },
+    setToFavorite: (state, action) => {
+      state.favoritedItems.push(action.payload);
+    },
+    setCurrentPageItems: (state, action) => {
+      state.currentProductsOnPage.push(action.payload);
     },
   },
 
@@ -73,5 +82,5 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const { setToCart } = itemsSlice.actions;
+export const { setToCart, setCurrentPageItems, setToFavorite } = itemsSlice.actions;
 export default itemsSlice.reducer;
