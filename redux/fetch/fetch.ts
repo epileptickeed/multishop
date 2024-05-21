@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ITEMS_API } from './ITEMS_API';
 import axios from 'axios';
 import { Catalogue } from '../../src/components/Navbar/Catalogue/types';
+import items from '../../data/items.json';
 
 export type Products = {
   id: string;
@@ -18,8 +19,9 @@ export type Products = {
   catalogueName: string;
 };
 
-export type SneakersTypeProps = {
+export type ItemsTypeProps = {
   shopItems: Catalogue[];
+  // shopItemsJSON: Catalogue[]; //<-- fix 'any[]'
   status: string;
   searchValue: string;
 
@@ -30,8 +32,9 @@ export type SneakersTypeProps = {
   currentProductsOnPage: Products[];
 };
 
-const initialState: SneakersTypeProps = {
+const initialState: ItemsTypeProps = {
   shopItems: [],
+  // shopItemsJSON: items,
   status: 'loading',
   searchValue: '',
   cartItems: [],
@@ -63,6 +66,12 @@ export const itemsSlice = createSlice({
     setCurrentPageItems: (state, action) => {
       state.currentProductsOnPage.push(action.payload);
     },
+    setItems: (state, action) => {
+      state.shopItems = action.payload;
+    },
+    // setJSONItems: (state, action) => {
+    //   state.shopItemsJSON = action.payload;
+    // },
   },
 
   extraReducers: (builder) => {
@@ -82,5 +91,6 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const { setToCart, setCurrentPageItems, setToFavorite } = itemsSlice.actions;
+export const { setToCart, setCurrentPageItems, setToFavorite, setItems /*setJSONItems*/ } =
+  itemsSlice.actions;
 export default itemsSlice.reducer;
