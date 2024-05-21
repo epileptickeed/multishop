@@ -444,6 +444,9 @@ body {
   flex-direction: column;
   border: 1px solid;
   width: 100%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
 
   .products_item_card_column {
     display: flex;
