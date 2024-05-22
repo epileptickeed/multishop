@@ -5,44 +5,53 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa6';
 import { CatalogueItemSelector } from '../../../../redux/fetch/selector';
 import { useEffect, useState } from 'react';
-import { setItems } from '../../../../redux/fetch/fetch';
 import Loading from '../../Loading/Loading';
+import { setItems } from '../../../../redux/fetch/fetch';
+import { HeaderItems, Products } from '../../../components/Navbar/Catalogue/types';
 
 const ProductsPage = () => {
-  const { headerName, itemId } = useParams();
   const dispatch = useDispatch();
+  const { headerName, itemId } = useParams();
 
-  // console.log(itemId);
   const [savedTitle, setSavedTitle] = useState(headerName);
+  const [itemsDisplayed, setItemsDisplayed] = useState<Products[] | HeaderItems[]>([]);
+
+  const { shopItems, status } = useSelector(CatalogueItemSelector);
+  const { currentMainHeader, currentSubHeaderItem } = useSelector(selectedItemSelector);
+
+  let pageItems: HeaderItems[];
 
   useEffect(() => {
     setSavedTitle(itemId);
+    setItemsDisplayed(pageItems);
   }, [itemId]);
-  console.log(savedTitle);
 
-  const { shopItems, status } = useSelector(CatalogueItemSelector);
-  const { currentSubHeaderItem, currentMainHeader, currentSecondHeader } =
-    useSelector(selectedItemSelector);
-  // const [pageItems, setPageItems] = useState([]);
-  console.log(status);
-  // if (status === 'loading') {
-  const pageItems = shopItems[currentSubHeaderItem].items[currentMainHeader].items.filter(
-    (item) => item.id === savedTitle,
-  );
-  // setPageItems(items);
-  // }
-  // console
-  // console.log(pageItems);
+  if (
+    status === 'loading' ||
+    !shopItems ||
+    !shopItems[currentSubHeaderItem] ||
+    !shopItems[currentSubHeaderItem].items[currentMainHeader]
+  ) {
+    return <Loading />;
+  } else {
+    pageItems = shopItems[currentSubHeaderItem].items[currentMainHeader].items.filter(
+      (item) => item.id === savedTitle,
+    );
+  }
 
-  const handleFavoriteClick = (id: string) => {};
-  const buyItem = (id: string) => {
-    // const boughtItems = shopItems.map((item) => {
-    //   return item.id === id ? { ...item, isAdded: !item.isAdded } : item;
-    // });
-    // dispatch(setItems(boughtItems));
+  const handleFavoriteClick = (id: string, index: number) => {
+    if (pageItems.length === 0) {
+      return;
+    }
+
+    const updatedItems = pageItems[index]?.products.map((item) => {
+      return item.id === id ? { ...item, isFavorite: !item.isFavorite } : item;
+    });
+    // dispatch(setItems(updatedItems));
+    setItemsDisplayed(updatedItems);
   };
-
-  // console.log(pageItems);
+  console.log(itemsDisplayed);
+  const buyItem = (id: string) => {};
 
   return (
     <div className="products_main">
@@ -68,7 +77,7 @@ const ProductsPage = () => {
                         <div className="products_item_card_column_price_buttons">
                           <button
                             className="favoriteBtn"
-                            onClick={() => handleFavoriteClick(products.id)}>
+                            onClick={() => handleFavoriteClick(products.id, index)}>
                             {products.isFavorite ? <FaHeart /> : <FaRegHeart />}
                           </button>
                           <button onClick={() => buyItem(products.id)}>Купить</button>

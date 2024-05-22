@@ -6,8 +6,9 @@ import ThirdHeaderItems from './ThirdHeaderItems';
 
 const ThirdHeaderPage = () => {
   const currentSubHeaderItem = useSelector(
-    (state: RootState) => state.PickedItems.currentSubHeaderItem,
+    (state: RootState) => state.PickedItems.PickedItems.currentSubHeaderItem,
   );
+  console.log(currentSubHeaderItem);
   const { headerName, itemId } = useParams();
 
   const selectedItems = items[currentSubHeaderItem].items.find((item) => item.id === itemId);

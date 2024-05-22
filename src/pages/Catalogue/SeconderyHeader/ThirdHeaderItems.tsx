@@ -11,8 +11,6 @@ const ThirdHeaderItems = ({ headerName, title, id, itemId, index }: CatalogueHea
       <Link
         to={`/catalog/${headerName}/${itemId}/${title}/${id}/${title}/${id}`}
         onClick={() => dispatch(setSecondHeader(index))}>
-        {' '}
-        {/* <-- тут нужен индекс!!! */}
         <img src="/items/tehnika.jpg" alt={title} />
         <h3>{title}</h3>
       </Link>

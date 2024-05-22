@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ITEMS_API } from './ITEMS_API';
 import axios from 'axios';
 import { Catalogue } from '../../src/components/Navbar/Catalogue/types';
-import items from '../../data/items.json';
 
 export type Products = {
   id: string;
