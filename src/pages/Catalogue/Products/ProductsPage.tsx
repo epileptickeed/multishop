@@ -6,24 +6,22 @@ import { FaHeart } from 'react-icons/fa6';
 import { CatalogueItemSelector } from '../../../../redux/fetch/selector';
 import { useEffect, useState } from 'react';
 import Loading from '../../Loading/Loading';
-import { setItems } from '../../../../redux/fetch/fetch';
-import { HeaderItems, Products } from '../../../components/Navbar/Catalogue/types';
+import { setToCart, setToFavorite } from '../../../../redux/fetch/fetch';
+import { HeaderItems } from '../../../components/Navbar/Catalogue/types';
+import { Rating } from '@mui/material';
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
   const { headerName, itemId } = useParams();
 
   const [savedTitle, setSavedTitle] = useState(headerName);
-  const [itemsDisplayed, setItemsDisplayed] = useState<Products[] | HeaderItems[]>([]);
 
   const { shopItems, status } = useSelector(CatalogueItemSelector);
   const { currentMainHeader, currentSubHeaderItem } = useSelector(selectedItemSelector);
 
   let pageItems: HeaderItems[];
-
   useEffect(() => {
     setSavedTitle(itemId);
-    setItemsDisplayed(pageItems);
   }, [itemId]);
 
   if (
@@ -38,20 +36,6 @@ const ProductsPage = () => {
       (item) => item.id === savedTitle,
     );
   }
-
-  const handleFavoriteClick = (id: string, index: number) => {
-    if (pageItems.length === 0) {
-      return;
-    }
-
-    const updatedItems = pageItems[index]?.products.map((item) => {
-      return item.id === id ? { ...item, isFavorite: !item.isFavorite } : item;
-    });
-    // dispatch(setItems(updatedItems));
-    setItemsDisplayed(updatedItems);
-  };
-  console.log(itemsDisplayed);
-  const buyItem = (id: string) => {};
 
   return (
     <div className="products_main">
@@ -71,16 +55,17 @@ const ProductsPage = () => {
                         <img src={products.image} alt={products.title} />
                         <p>{products.title}</p>
                         <p>{products.id}</p>
+                        <Rating value={products.rating} />
                       </div>
                       <div className="products_item_card_column_price">
                         <h1>{products.price}</h1>
                         <div className="products_item_card_column_price_buttons">
                           <button
                             className="favoriteBtn"
-                            onClick={() => handleFavoriteClick(products.id, index)}>
+                            onClick={() => dispatch(setToFavorite(products))}>
                             {products.isFavorite ? <FaHeart /> : <FaRegHeart />}
                           </button>
-                          <button onClick={() => buyItem(products.id)}>Купить</button>
+                          <button onClick={() => dispatch(setToCart(products))}>Купить</button>
                         </div>
                       </div>
                     </div>

@@ -16,6 +16,7 @@ export type Products = {
   profitable: boolean;
   reliability: string;
   catalogueName: string;
+  count: number;
 };
 
 export type ItemsTypeProps = {
@@ -57,10 +58,25 @@ export const itemsSlice = createSlice({
   initialState,
   reducers: {
     setToCart: (state, action) => {
-      state.cartItems.push(action.payload);
+      const findItem = state.cartItems.find((obj) => obj.id === action.payload.id);
+      if (findItem) {
+        findItem.count++;
+      } else
+        state.cartItems.push({
+          ...action.payload,
+          count: 1,
+        });
     },
     setToFavorite: (state, action) => {
-      state.favoritedItems.push(action.payload);
+      const findItem = state.favoritedItems.find((obj) => obj.id === action.payload.id);
+      if (findItem) {
+        findItem.count++;
+      } else {
+        state.favoritedItems.push({
+          ...action.payload,
+          count: 1,
+        });
+      }
     },
     setCurrentPageItems: (state, action) => {
       state.currentProductsOnPage.push(action.payload);
@@ -68,9 +84,6 @@ export const itemsSlice = createSlice({
     setItems: (state, action) => {
       state.shopItems = action.payload;
     },
-    // setJSONItems: (state, action) => {
-    //   state.shopItemsJSON = action.payload;
-    // },
   },
 
   extraReducers: (builder) => {
