@@ -339,9 +339,6 @@ body {
   overflow: hidden;
   position: relative;
 
-  &:hover {
-  }
-
   .slider_item {
     width: 400px;
     height: 300px;
@@ -442,20 +439,113 @@ body {
 .products_items_column {
   display: flex;
   flex-direction: column;
-  border: 1px solid;
   width: 100%;
   background-color: white;
   padding: 1rem;
   border-radius: 1rem;
+  position: relative;
+  gap: 1rem;
+
+  .products_items_column_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .products_item_card_column_middle {
+    display: flex;
+    gap: 1rem;
+  }
 
   .products_item_card_column {
     display: flex;
     justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+
+    &:hover .products_item_card_column_id {
+      display: block !important;
+    }
 
     .products_item_card_column_title {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+
+      flex-direction: column;
       gap: 2rem;
+    }
+
+    .products_item_card_column_image {
+      position: relative;
+    }
+
+    .products_item_card_column_id {
+      display: none;
+      position: absolute;
+      top: 70%;
+      left: 0%;
+      background-color: white;
+      padding: 1rem;
+
+      width: 100%;
+      text-align: center;
+    }
+    .products_item_card_column_rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      background-color: var(--clr-grey);
+    }
+
+    .products_item_card_column_price_buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      button {
+        height: 100%;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+      }
+      .buyBtn {
+        border: 1px solid #cacaca50;
+        background: white;
+
+        &:hover {
+          background: rgb(255, 166, 54);
+          background: linear-gradient(0deg, rgba(255, 166, 54, 1) 0%, rgba(255, 229, 0, 1) 100%);
+        }
+      }
+    }
+  }
+
+  .products_sort {
+    position: relative;
+    .sortPopup {
+      position: absolute;
+      top: -100%;
+      left: 14%;
+      background-color: white;
+      box-shadow: var(--shadow);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1rem;
+      padding-block: 0.5rem;
+
+      span {
+        padding: 1rem 2rem;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #fc9d2f50;
+        }
+      }
     }
   }
 }

@@ -1,23 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ITEMS_API } from './ITEMS_API';
 import axios from 'axios';
-import { Catalogue } from '../../src/components/Navbar/Catalogue/types';
-
-export type Products = {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  isFavorite: boolean;
-  isAdded: boolean;
-  rating: number;
-  rating_votes: number;
-  in_stock: number;
-  profitable: boolean;
-  reliability: string;
-  catalogueName: string;
-  count: number;
-};
+import { Catalogue, Products } from '../../src/components/Navbar/Catalogue/types';
 
 export type ItemsTypeProps = {
   shopItems: Catalogue[];

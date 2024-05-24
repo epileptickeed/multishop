@@ -4,6 +4,7 @@ import CartEmpty from './CartEmpty';
 
 const Cart = () => {
   const { cartItems } = useSelector(CatalogueItemSelector);
+  console.log(cartItems);
   return (
     <div>
       {cartItems.length > 0 ? (

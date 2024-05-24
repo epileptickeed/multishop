@@ -1,4 +1,4 @@
-export type Products = {
+export interface Products extends HeaderItems {
   id: string;
   image: string;
   title: string;
@@ -11,7 +11,8 @@ export type Products = {
   profitable: boolean;
   reliability: string;
   catalogueName: string;
-};
+  count: number;
+}
 
 export type HeaderItems = {
   title: string;

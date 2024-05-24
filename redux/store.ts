@@ -5,6 +5,7 @@ import itemsSlice from './fetch/fetch';
 import formSlice from './FormSlice/slice';
 import filterSlice from './newsFilterSlices/NewsFilterSlice';
 import pickedItemSlice from './PickedItemsSlice/PickedItemSlice';
+import sortSlice from './SortSlice/slice';
 
 import {
   persistStore,
@@ -36,8 +37,8 @@ export const store = configureStore({
     items: itemsSlice,
     search: formSlice,
     filter: filterSlice,
-    // PickedItems: pickedItemSlice,
     PickedItems: persistedReducer,
+    sort: sortSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
