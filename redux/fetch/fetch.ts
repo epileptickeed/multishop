@@ -1,22 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ITEMS_API } from './ITEMS_API';
 import axios from 'axios';
-import { Catalogue } from '../../src/components/Navbar/Catalogue/types';
-
-export type Products = {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  isFavorite: boolean;
-  isAdded: boolean;
-  rating: number;
-  rating_votes: number;
-  in_stock: number;
-  profitable: boolean;
-  reliability: string;
-  catalogueName: string;
-};
+import { Catalogue, Products } from '../../src/components/Navbar/Catalogue/types';
 
 export type ItemsTypeProps = {
   shopItems: Catalogue[];
@@ -57,10 +42,25 @@ export const itemsSlice = createSlice({
   initialState,
   reducers: {
     setToCart: (state, action) => {
-      state.cartItems.push(action.payload);
+      const findItem = state.cartItems.find((obj) => obj.id === action.payload.id);
+      if (findItem) {
+        findItem.count++;
+      } else
+        state.cartItems.push({
+          ...action.payload,
+          count: 1,
+        });
     },
     setToFavorite: (state, action) => {
-      state.favoritedItems.push(action.payload);
+      const findItem = state.favoritedItems.find((obj) => obj.id === action.payload.id);
+      if (findItem) {
+        findItem.count++;
+      } else {
+        state.favoritedItems.push({
+          ...action.payload,
+          count: 1,
+        });
+      }
     },
     setCurrentPageItems: (state, action) => {
       state.currentProductsOnPage.push(action.payload);
@@ -68,9 +68,6 @@ export const itemsSlice = createSlice({
     setItems: (state, action) => {
       state.shopItems = action.payload;
     },
-    // setJSONItems: (state, action) => {
-    //   state.shopItemsJSON = action.payload;
-    // },
   },
 
   extraReducers: (builder) => {
