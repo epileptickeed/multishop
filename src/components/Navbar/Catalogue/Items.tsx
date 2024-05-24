@@ -1,11 +1,11 @@
-import CatalogueHeaders from "./CatalogueHeaders";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../../../redux/store";
-import { useEffect } from "react";
-import { fetchShopItems } from "../../../../redux/fetch/fetch";
-import { CatalogueItemSelector } from "../../../../redux/fetch/selector";
-import ItemsHeader from "./CatalogueItems/ItemsHeader";
-import catalogue from "../../../../data/items.json";
+import CatalogueHeaders from './CatalogueHeaders';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../../../../redux/store';
+import { useEffect } from 'react';
+import { fetchShopItems } from '../../../../redux/fetch/fetch';
+import { CatalogueItemSelector } from '../../../../redux/fetch/selector';
+import ItemsHeader from './CatalogueItems/ItemsHeader';
+import catalogue from '../../../../data/items.json';
 
 const Items = () => {
   const { shopItems } = useSelector(CatalogueItemSelector);

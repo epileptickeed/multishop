@@ -1,60 +1,92 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ITEMS_API } from "./ITEMS_API";
-import axios from "axios";
-import { Catalogue } from "../../src/components/Navbar/Catalogue/types";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ITEMS_API } from './ITEMS_API';
+import axios from 'axios';
+import { Catalogue, Products } from '../../src/components/Navbar/Catalogue/types';
 
-export type SneakersTypeProps = {
+export type ItemsTypeProps = {
   shopItems: Catalogue[];
+  // shopItemsJSON: Catalogue[]; //<-- fix 'any[]'
   status: string;
   searchValue: string;
-  // favoriteSneakers: SneakersType[];
-  // addedSneakers: SneakersType[];
+
+  cartItems: Products[];
+
+  favoritedItems: Products[];
+
+  currentProductsOnPage: Products[];
 };
 
-const initialState: SneakersTypeProps = {
+const initialState: ItemsTypeProps = {
   shopItems: [],
-  status: "loading",
-  searchValue: "",
-  // favoriteSneakers: [],
-  // addedSneakers: [],
+  // shopItemsJSON: items,
+  status: 'loading',
+  searchValue: '',
+  cartItems: [],
+
+  favoritedItems: [],
+  currentProductsOnPage: [],
 };
 
-// First, create the thunk
-export const fetchShopItems = createAsyncThunk(
-  "shopItems/fetchItems",
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get(`${ITEMS_API}/`);
-      return response.data;
-    } catch (err) {
-      console.error(err);
-      return thunkAPI.rejectWithValue(err);
-    }
+export const fetchShopItems = createAsyncThunk('shopItems/fetchItems', async (_, thunkAPI) => {
+  try {
+    const response = await axios.get(`${ITEMS_API}/`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    return thunkAPI.rejectWithValue(err);
   }
-);
+});
 
-// Then, handle actions in your reducers:
 export const itemsSlice = createSlice({
-  name: "shopItems",
+  name: 'shopItems',
   initialState,
   reducers: {
-    // standard reducer logic, with auto-generated action types per reducer
+    setToCart: (state, action) => {
+      const findItem = state.cartItems.find((obj) => obj.id === action.payload.id);
+      if (findItem) {
+        findItem.count++;
+      } else
+        state.cartItems.push({
+          ...action.payload,
+          count: 1,
+        });
+    },
+    setToFavorite: (state, action) => {
+      const findItem = state.favoritedItems.find((obj) => obj.id === action.payload.id);
+      if (findItem) {
+        findItem.count++;
+      } else {
+        state.favoritedItems.push({
+          ...action.payload,
+          count: 1,
+        });
+      }
+    },
+    setCurrentPageItems: (state, action) => {
+      state.currentProductsOnPage.push(action.payload);
+    },
+    setItems: (state, action) => {
+      state.shopItems = action.payload;
+    },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchShopItems.pending, (state) => {
-        state.status = "loading";
+        state.status = 'loading';
         state.shopItems = [];
       })
       .addCase(fetchShopItems.fulfilled, (state, action) => {
         state.shopItems = action.payload;
-        state.status = "success";
+        state.status = 'success';
       })
       .addCase(fetchShopItems.rejected, (state) => {
-        state.status = "error";
+        state.status = 'error';
         state.shopItems = [];
       });
   },
 });
 
+export const { setToCart, setCurrentPageItems, setToFavorite, setItems /*setJSONItems*/ } =
+  itemsSlice.actions;
 export default itemsSlice.reducer;

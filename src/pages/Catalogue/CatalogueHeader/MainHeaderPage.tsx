@@ -1,12 +1,11 @@
 import blogs from '../blogs.json';
 import { Link, useParams } from 'react-router-dom';
 import items from '../../../../data/items.json';
-import CatalogueHeaderItems from './CatalogueHeaderItems';
+import MainHeaderItems from './MainHeaderItems';
 
-const CatalogueHeaderPage = () => {
+const MainHeaderPage = () => {
   const { headerName, itemId } = useParams();
   const selectedItems = items.find((item) => item.id === itemId);
-  // console.log(selectedItems);
 
   return (
     <div className="catalogue_header_page">
@@ -17,9 +16,15 @@ const CatalogueHeaderPage = () => {
       <h1>{headerName}</h1>
 
       <div className="catalogs_header_items">
-        {selectedItems?.items.map((item) => {
+        {selectedItems?.items.map((item, index) => {
           return (
-            <CatalogueHeaderItems key={item.id} {...item} headerName={headerName} itemId={itemId} />
+            <MainHeaderItems
+              key={item.id}
+              {...item}
+              headerName={headerName}
+              itemId={itemId}
+              index={index}
+            />
           );
         })}
       </div>
@@ -50,4 +55,4 @@ const CatalogueHeaderPage = () => {
   );
 };
 
-export default CatalogueHeaderPage;
+export default MainHeaderPage;
